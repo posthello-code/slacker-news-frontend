@@ -9,6 +9,6 @@ services:
       - key: PORT
         sync: false
     region: oregon
-    buildCommand: npm install; npx ng build --prod
+    buildCommand: npm install; npx ng build --configuration --production
     startCommand: npm run start
 version: "1"
