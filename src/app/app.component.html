@@ -1,5 +1,22 @@
 <main class="main">
   <div class="content">
-    <app-test-component></app-test-component>
+    <p-splitter
+      [panelSizes]="[15, 85]"
+      [style]="{ height: '100%', fill:true, }"
+    >
+      <ng-template pTemplate>
+        <div id="title-text">
+          Slacker News
+          <br>
+          <br>
+          A hacker news feed for slackers
+        </div>
+      </ng-template>
+      <ng-template id="summariesParent" pTemplate>
+        <div id="summaries">
+          <app-timeline-viewer id="#timeline"></app-timeline-viewer>
+        </div>
+      </ng-template>
+    </p-splitter>
   </div>
 </main>

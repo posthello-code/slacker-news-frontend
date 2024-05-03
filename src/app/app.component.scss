@@ -1,3 +1,36 @@
 .content {
   text-align: center;
+  height: 100%;
+  fill: true;
+}
+
+.main {
+  height: 100%;
+  fill: true;
+}
+
+#p-splitter {
+  height: 1000px;
+  fill: true;
+}
+
+#summariesParent {
+  padding: 20px;
+  align-content: center;
+}
+
+#summaries {
+  padding: 20px;
+
+  align-content: center;
+}
+
+
+#timeline {
+  align-content: center;
+}
+
+#title-text
+{
+text-align: left;
 }
