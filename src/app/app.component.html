@@ -1,22 +1,25 @@
 <main class="main">
-  <div class="content">
-    <p-splitter
-      [panelSizes]="[15, 85]"
-      [style]="{ height: '100%', fill:true, }"
-    >
-      <ng-template pTemplate>
-        <div id="title-text">
-          Slacker News
-          <br>
-          <br>
-          A hacker news feed for slackers
-        </div>
+    <div class="content">
+      <div *ngIf="isSmallScreen; else elseBlock">
+        <div id="title-text" [style]="{ padding: '10px' }">Slacker News</div>
+        <app-timeline-viewer
+          id="#timeline-small"
+          style="padding: 20px"
+        ></app-timeline-viewer>
+      </div>
+      <ng-template #elseBlock>
+        <p-splitter id="p-splitter" [panelSizes]="[15, 85]">
+          <ng-template pTemplate>
+            <div id="title-text" [style]="{ padding: '10px' }">
+              Slacker News
+            </div>
+          </ng-template>
+          <ng-template id="summariesParent" pTemplate>
+            <div id="summaries">
+              <app-timeline-viewer id="#timeline-split"></app-timeline-viewer>
+            </div>
+          </ng-template>
+        </p-splitter>
       </ng-template>
-      <ng-template id="summariesParent" pTemplate>
-        <div id="summaries">
-          <app-timeline-viewer id="#timeline"></app-timeline-viewer>
-        </div>
-      </ng-template>
-    </p-splitter>
-  </div>
+    </div>
 </main>
