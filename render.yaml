@@ -1,14 +1,9 @@
-# Exported from Render on 2024-05-03T19:38:08Z
+# Exported from Render on 2024-05-04T05:55:52Z
 services:
   - type: web
     name: slacker-news-frontend
-    runtime: node
+    runtime: static
     repo: https://github.com/posthello-code/slacker-news-frontend
-    plan: free
-    envVars:
-      - key: PORT
-        sync: false
-    region: oregon
-    buildCommand: npm install; npx ng build --configuration --production
-    startCommand: npm run start
+    buildCommand: npm install; npm run build
+    staticPublishPath: dist/slacker-news/browser
 version: "1"
