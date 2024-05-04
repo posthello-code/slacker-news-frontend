@@ -1,25 +1,54 @@
 <p-scrollPanel
-  [style]="{ width: '100%', height: '100%' }"
+  [style]="{ padding: '5px', width: '100%', height: '2000px', 'justify-content': 'center' }"
   styleClass="custombar1"
 >
-  <p-timeline [value]="events">
-    <ng-template [style]="{ width: '100%', height: '100%' }"
- pTemplate="marker" let-event>
-        <span  class="custom-marker shadow-2">
-            <i class="pi pi-book"></i>
+  <div *ngIf="!isSmallScreen; else elseBlock">
+    <p-timeline
+      [style]="{ display: 'inline', padding: '20px', height: '100%' }"
+      [value]="stories"
+    >
+      <ng-template
+        [style]="{ display: 'inline' }"
+        [style]="{ height: '100%' }"
+        pTemplate="marker"
+        let-story
+      >
+        <span [style]="{ display: 'inline' }" class="custom-marker shadow-2">
+          <i class="pi pi-book"></i>
         </span>
-    </ng-template>
+      </ng-template>
 
-    <ng-template style="width: 10px; text-align: left;" pTemplate="opposite" let-event>
-      <p-card class="card" [style]="{ 'text-align': 'left', width: '100%', height: '100%' }"
- [header]="event.title">
-        <p>
-          {{event.summary}}
-        </p>
+      <ng-template
+        [style]="{ display: 'inline' }"
+        id="stories"
+        pTemplate="opposite"
+        let-story
+      >
+        <p-card class="card" [header]="story.title">
+          {{ story.summary }}
+        </p-card>
+      </ng-template>
+      <ng-template
+        [style]="{ display: 'inline' }"
+        pTemplate="content"
+        let-story
+      >
+        {{ story.createdDate }}
+      </ng-template>
+    </p-timeline>
+  </div>
+  <ng-template [style]="{padding: '20px'}" #elseBlock>
+    <div *ngFor="let story of stories">
+      <span [style]="{ display: 'inline' }" class="custom-marker shadow-2">
+          <i class="pi pi-book"></i>
+        </span>
+              {{ story.createdDate }}
+
+      <p-card [style]="{padding: '20px'}" class="card" [header]="story.title">
+        {{ story.summary }}
       </p-card>
-    </ng-template>
-    <ng-template pTemplate="content" let-event>
-      {{ event.createdDate }}
-    </ng-template>
-  </p-timeline>
+
+    </div>
+    </ng-template
+  >
 </p-scrollPanel>

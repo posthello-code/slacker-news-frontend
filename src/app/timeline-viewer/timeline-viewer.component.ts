@@ -3,47 +3,54 @@ import { TimelineModule } from 'primeng/timeline';
 import { CardModule } from 'primeng/card';
 import { ScrollPanelModule } from 'primeng/scrollpanel';
 import { SlackerNewsApiService } from '../slacker-news-api.service';
+import { ListboxModule } from 'primeng/listbox';
+import { CommonModule, NgFor, NgIf } from '@angular/common';
 
-interface EventItem {
-  status?: string;
-  date?: string;
-  icon?: string;
-  color?: string;
-  image?: string;
+interface Stories {
+  title?: string;
+  summary?: string;
 }
 @Component({
   selector: 'app-timeline-viewer',
   standalone: true,
-  imports: [TimelineModule, CardModule, ScrollPanelModule],
+  imports: [
+    TimelineModule,
+    CardModule,
+    ScrollPanelModule,
+    NgIf,
+    ListboxModule,
+    NgFor,
+    CommonModule,
+  ],
   templateUrl: './timeline-viewer.component.html',
   styleUrl: './timeline-viewer.component.scss',
 })
 export class TimelineViewerComponent {
-  events: any[];
-
+  stories: any[];
+  dataAvailable: Boolean;
+  isSmallScreen: Boolean | undefined;
   constructor(private slackerNewsApi: SlackerNewsApiService) {
-    slackerNewsApi.getStories();
-    this.events = [
-      {
-        title: 'Unable to load stories, please try again later.',
-      },
-    ];
+    this.stories = [];
+    this.dataAvailable = false;
   }
   ngOnInit() {
     this.loadData();
+    this.isSmallScreen = window.innerWidth < 768;
   }
 
   loadData() {
     this.slackerNewsApi
       .getStories()
       .then((data) => {
+        this.dataAvailable = true;
         console.log('then');
 
         // Use the data here
-        this.events = data.data;
+        this.stories = data.data;
         console.log(data.status);
       })
       .catch((e) => {
+        this.dataAvailable = false;
         console.log('catch');
         console.log(e);
       });
