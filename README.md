@@ -1,5 +1,17 @@
 # SlackerNews
 
+See a demo of the front-end [-->here<--](https://slacker-news-frontend.onrender.com/)
+
+This is a free tier server on render.com so you may need to wait up to 50 seconds for the service to start up.
+
+Get a quick summary of the most popular stories at ["hacker news"](news.ycombinator.com) with slacker-news.
+
+Slacker news stories are collected from a python [server](https://github.com/posthello-code/slacker-news-server)
+
+Top stories are periodically saved multiple times a day and summarized using the OpenAI gpt APIs.
+
+---
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.6.
 
 ## Development server
