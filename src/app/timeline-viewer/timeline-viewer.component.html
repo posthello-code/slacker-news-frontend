@@ -1,7 +1,8 @@
-<p-scrollPanel
+<div *ngIf="dataAvailable; else elseDataFallback"><p-scrollPanel
   [style]="{ padding: '5px', width: '100%', height: '2000px', 'justify-content': 'center' }"
   styleClass="custombar1"
 >
+  
   <div *ngIf="!isSmallScreen; else elseBlock">
     <p-timeline
       [style]="{ display: 'inline', padding: '20px', height: '100%' }"
@@ -25,7 +26,8 @@
         let-story
       >
         <p-card class="card" [header]="story.title">
-          {{ story.summary }}
+          {{ story.summary }} <br><br>
+          <a [href]="story.sourceUri">Source</a>
         </p-card>
       </ng-template>
       <ng-template
@@ -46,9 +48,15 @@
 
       <p-card [style]="{padding: '20px'}" class="card" [header]="story.title">
         {{ story.summary }}
+        <br>
       </p-card>
 
     </div>
     </ng-template
   >
-</p-scrollPanel>
+</p-scrollPanel></div>
+<ng-template #elseDataFallback>
+  API Currently unavailable, try again later.
+</ng-template>
+
+

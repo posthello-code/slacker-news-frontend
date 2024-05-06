@@ -9,6 +9,8 @@ import { CommonModule, NgFor, NgIf } from '@angular/common';
 interface Stories {
   title?: string;
   summary?: string;
+  sourceUri?: string;
+  createdDate?: string;
 }
 @Component({
   selector: 'app-timeline-viewer',
@@ -26,7 +28,7 @@ interface Stories {
   styleUrl: './timeline-viewer.component.scss',
 })
 export class TimelineViewerComponent {
-  stories: any[];
+  stories: Stories[];
   dataAvailable: Boolean;
   isSmallScreen: Boolean | undefined;
   constructor(private slackerNewsApi: SlackerNewsApiService) {
