@@ -1,62 +1,69 @@
-<div *ngIf="dataAvailable; else elseDataFallback"><p-scrollPanel
-  [style]="{ padding: '5px', width: '100%', height: '2000px', 'justify-content': 'center' }"
-  styleClass="custombar1"
->
-  
-  <div *ngIf="!isSmallScreen; else elseBlock">
-    <p-timeline
-      [style]="{ display: 'inline', padding: '20px', height: '100%' }"
-      [value]="stories"
-    >
-      <ng-template
-        [style]="{ display: 'inline' }"
-        [style]="{ height: '100%' }"
-        pTemplate="marker"
-        let-story
+<div *ngIf="dataAvailable; else elseDataFallback">
+  <p-scrollPanel
+    [style]="{
+      padding: '5px',
+      width: '100%',
+      height: '2000px',
+      'justify-content': 'center'
+    }"
+    styleClass="custombar1"
+  >
+    <div *ngIf="!isSmallScreen; else elseBlock">
+      <p-timeline
+        [style]="{ display: 'inline', padding: '20px', height: '100%' }"
+        [value]="stories"
       >
+        <ng-template
+          [style]="{ display: 'inline' }"
+          [style]="{ height: '100%' }"
+          pTemplate="marker"
+          let-story
+        >
+          <span [style]="{ display: 'inline' }" class="custom-marker shadow-2">
+            <i class="pi pi-book"></i>
+          </span>
+        </ng-template>
+
+        <ng-template
+          [style]="{ display: 'inline' }"
+          id="stories"
+          pTemplate="opposite"
+          let-story
+        >
+          <p-card class="card" [header]="story.title">
+            {{ story.summary }} <br /><br />
+            <a [href]="story.sourceUri">Source</a>
+          </p-card>
+        </ng-template>
+        <ng-template
+          [style]="{ display: 'inline' }"
+          pTemplate="content"
+          let-story
+        >
+          {{ story.createdDate }}
+        </ng-template>
+      </p-timeline>
+    </div>
+    <ng-template [style]="{ padding: '20px' }" #elseBlock>
+      <div *ngFor="let story of stories">
         <span [style]="{ display: 'inline' }" class="custom-marker shadow-2">
           <i class="pi pi-book"></i>
         </span>
-      </ng-template>
+        {{ story.createdDate }}
 
-      <ng-template
-        [style]="{ display: 'inline' }"
-        id="stories"
-        pTemplate="opposite"
-        let-story
-      >
-        <p-card class="card" [header]="story.title">
-          {{ story.summary }} <br><br>
+        <p-card
+          [style]="{ padding: '20px' }"
+          class="card"
+          [header]="story.title"
+        >
+          {{ story.summary }}
+          <br /><br />
           <a [href]="story.sourceUri">Source</a>
         </p-card>
-      </ng-template>
-      <ng-template
-        [style]="{ display: 'inline' }"
-        pTemplate="content"
-        let-story
-      >
-        {{ story.createdDate }}
-      </ng-template>
-    </p-timeline>
-  </div>
-  <ng-template [style]="{padding: '20px'}" #elseBlock>
-    <div *ngFor="let story of stories">
-      <span [style]="{ display: 'inline' }" class="custom-marker shadow-2">
-          <i class="pi pi-book"></i>
-        </span>
-              {{ story.createdDate }}
-
-      <p-card [style]="{padding: '20px'}" class="card" [header]="story.title">
-        {{ story.summary }}
-        <br>
-      </p-card>
-
-    </div>
-    </ng-template
-  >
-</p-scrollPanel></div>
+      </div>
+    </ng-template>
+  </p-scrollPanel>
+</div>
 <ng-template #elseDataFallback>
   API Currently unavailable, try again later.
 </ng-template>
-
-

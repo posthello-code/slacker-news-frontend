@@ -1,8 +1,8 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import { WindowSizeService } from './window-size.service';
+import { WindowSizeService } from "./window-size.service";
 
-describe('WindowSizeService', () => {
+describe("WindowSizeService", () => {
   let service: WindowSizeService;
 
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe('WindowSizeService', () => {
     service = TestBed.inject(WindowSizeService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });

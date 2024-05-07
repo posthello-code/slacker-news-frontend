@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { TimelineModule } from 'primeng/timeline';
-import { CardModule } from 'primeng/card';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { SlackerNewsApiService } from '../slacker-news-api.service';
-import { ListboxModule } from 'primeng/listbox';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component } from "@angular/core";
+import { TimelineModule } from "primeng/timeline";
+import { CardModule } from "primeng/card";
+import { ScrollPanelModule } from "primeng/scrollpanel";
+import { SlackerNewsApiService } from "../slacker-news-api.service";
+import { ListboxModule } from "primeng/listbox";
+import { CommonModule, NgFor, NgIf } from "@angular/common";
 
 interface Stories {
   title?: string;
@@ -13,7 +13,7 @@ interface Stories {
   createdDate?: string;
 }
 @Component({
-  selector: 'app-timeline-viewer',
+  selector: "app-timeline-viewer",
   standalone: true,
   imports: [
     TimelineModule,
@@ -24,8 +24,8 @@ interface Stories {
     NgFor,
     CommonModule,
   ],
-  templateUrl: './timeline-viewer.component.html',
-  styleUrl: './timeline-viewer.component.scss',
+  templateUrl: "./timeline-viewer.component.html",
+  styleUrl: "./timeline-viewer.component.scss",
 })
 export class TimelineViewerComponent {
   stories: Stories[];
@@ -45,7 +45,7 @@ export class TimelineViewerComponent {
       .getStories()
       .then((data) => {
         this.dataAvailable = true;
-        console.log('then');
+        console.log("then");
 
         // Use the data here
         this.stories = data.data;
@@ -53,7 +53,7 @@ export class TimelineViewerComponent {
       })
       .catch((e) => {
         this.dataAvailable = false;
-        console.log('catch');
+        console.log("catch");
         console.log(e);
       });
   }

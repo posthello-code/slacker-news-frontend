@@ -10,7 +10,7 @@
 }
 
 #p-splitter {
-  background-color:brown;
+  background-color: brown;
   height: 100%;
   fill: true;
 }
@@ -26,7 +26,6 @@
   align-content: center;
 }
 
-
 #timeline-small {
   padding: 20px;
   align-content: center;
@@ -37,14 +36,12 @@
   align-content: center;
 }
 
-#title-text
-{
-text-align: left;
+#title-text {
+  text-align: left;
 }
 
 .p-timeline-event {
-
-    display: flex;
-    position: relative;
-    min-height: 70px;
+  display: flex;
+  position: relative;
+  min-height: 70px;
 }
