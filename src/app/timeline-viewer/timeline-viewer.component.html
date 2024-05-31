@@ -33,6 +33,20 @@
           <p-card class="card" [header]="story.title">
             {{ story.summary }} <br /><br />
             <a [href]="story.sourceUri">Source</a>
+            <br /><br />
+
+            <div *ngFor="let comment of comments">
+              <div
+                id="comments"
+                *ngIf="
+                  comment.externalId == story.externalId &&
+                  story.externalId != 0
+                "
+              >
+                <div class="subheading">What people are saying:</div>
+                {{ comment.summary }}
+              </div>
+            </div>
           </p-card>
         </ng-template>
         <ng-template
@@ -59,6 +73,19 @@
           {{ story.summary }}
           <br /><br />
           <a [href]="story.sourceUri">Source</a>
+          <br /><br />
+          <div *ngFor="let comment of comments">
+            <div
+              id="comments"
+              *ngIf="
+                comment.externalId == story.externalId && story.externalId != 0
+              "
+            >
+              <div class="subheading">What people are saying:</div>
+
+              {{ comment.summary }}
+            </div>
+          </div>
         </p-card>
       </div>
     </ng-template>

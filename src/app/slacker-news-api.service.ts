@@ -1,11 +1,17 @@
-import { Injectable } from "@angular/core";
-import axios from "axios";
+import { Injectable } from '@angular/core';
+import axios from 'axios';
+
+const url = 'https://slacker-news-server.onrender.com';
+
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class SlackerNewsApiService {
   constructor() {}
   getStories() {
-    return axios.get("https://slacker-news-server.onrender.com/stories");
+    return axios.get(url + '/stories');
+  }
+  getComments() {
+    return axios.get(url + '/comments');
   }
 }
