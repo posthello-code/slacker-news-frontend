@@ -45,6 +45,13 @@
               >
                 <div class="subheading">What people are saying:</div>
                 {{ comment.summary }}
+                <br /><br>
+                <a
+                  [href]="
+                    'https://news.ycombinator.com/item?id=' + story.externalId
+                  "
+                  >Discussion</a
+                >
               </div>
             </div>
           </p-card>
@@ -84,6 +91,13 @@
               <div class="subheading">What people are saying:</div>
 
               {{ comment.summary }}
+              <br/><br />
+              <a
+                [href]="
+                  'https://news.ycombinator.com/item?id=' + story.externalId
+                "
+                >Discussion</a
+              >
             </div>
           </div>
         </p-card>
