@@ -6,11 +6,9 @@ Currently it summarizes [hacker news](https://news.ycombinator.com) articles usi
 
 Check it out [here!](https://slacker-news-frontend.onrender.com/)
 
-This may or may not be running on a free tier server on render.com so you may need to wait up to 50 seconds for the backend to start up.
-
 Slacker news stories are collected using a python [server](https://github.com/posthello-code/slacker-news-server) into a postgres database.
 
-Top stories are periodically saved multiple times a day.
+Top stories are periodically saved multiple times a day with a cron job via render.com
 
 ---
 
