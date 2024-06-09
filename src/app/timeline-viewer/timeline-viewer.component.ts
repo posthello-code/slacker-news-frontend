@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
-import { TimelineModule } from 'primeng/timeline';
-import { CardModule } from 'primeng/card';
-import { ScrollPanelModule } from 'primeng/scrollpanel';
-import { SlackerNewsApiService } from '../slacker-news-api.service';
-import { ListboxModule } from 'primeng/listbox';
-import { CommonModule, NgFor, NgIf } from '@angular/common';
+import { Component } from "@angular/core";
+import { TimelineModule } from "primeng/timeline";
+import { CardModule } from "primeng/card";
+import { ScrollPanelModule } from "primeng/scrollpanel";
+import { SlackerNewsApiService } from "../slacker-news-api.service";
+import { ListboxModule } from "primeng/listbox";
+import { CommonModule, NgFor, NgIf } from "@angular/common";
 
 interface Story {
   id?: string;
@@ -25,7 +25,7 @@ interface Comment {
 }
 
 @Component({
-  selector: 'app-timeline-viewer',
+  selector: "app-timeline-viewer",
   standalone: true,
   imports: [
     TimelineModule,
@@ -36,8 +36,8 @@ interface Comment {
     NgFor,
     CommonModule,
   ],
-  templateUrl: './timeline-viewer.component.html',
-  styleUrl: './timeline-viewer.component.scss',
+  templateUrl: "./timeline-viewer.component.html",
+  styleUrl: "./timeline-viewer.component.scss",
 })
 export class TimelineViewerComponent {
   stories: Story[];
@@ -72,7 +72,7 @@ export class TimelineViewerComponent {
       })
       .catch((e) => {
         this.dataAvailable = false;
-        console.log('catch');
+        console.log("catch");
         console.log(e);
       });
     this.slackerNewsApi
@@ -85,7 +85,7 @@ export class TimelineViewerComponent {
       })
       .catch((e) => {
         this.commentsAvailable = false;
-        console.log('catch');
+        console.log("catch");
         console.log(e);
       });
   }
