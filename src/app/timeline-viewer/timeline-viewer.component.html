@@ -45,7 +45,7 @@
               >
                 <div class="subheading">What people are saying:</div>
                 {{ comment.summary }}
-                <br /><br>
+                <br /><br />
                 <a
                   [href]="
                     'https://news.ycombinator.com/item?id=' + story.externalId
@@ -91,7 +91,7 @@
               <div class="subheading">What people are saying:</div>
 
               {{ comment.summary }}
-              <br/><br />
+              <br /><br />
               <a
                 [href]="
                   'https://news.ycombinator.com/item?id=' + story.externalId
@@ -106,5 +106,6 @@
   </p-scrollPanel>
 </div>
 <ng-template #elseDataFallback>
-  API Currently unavailable, try again later.
+  API temporarily unavailable.
+  <button (click)="reload()">Click here to reload</button>
 </ng-template>

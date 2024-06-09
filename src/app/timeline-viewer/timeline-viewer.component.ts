@@ -51,7 +51,12 @@ export class TimelineViewerComponent {
     this.dataAvailable = false;
     this.commentsAvailable = false;
   }
+
   ngOnInit() {
+    this.reload();
+  }
+
+  reload() {
     this.loadData();
     this.isSmallScreen = window.innerWidth < 768;
   }
@@ -61,11 +66,9 @@ export class TimelineViewerComponent {
       .getStories()
       .then((data) => {
         this.dataAvailable = true;
-        console.log('then');
 
         // Use the data here
         this.stories = data.data;
-        console.log(data.status);
       })
       .catch((e) => {
         this.dataAvailable = false;
@@ -76,11 +79,9 @@ export class TimelineViewerComponent {
       .getComments()
       .then((data) => {
         this.commentsAvailable = true;
-        console.log('then');
 
         // Use the data here
         this.comments = data.data;
-        console.log(data.status);
       })
       .catch((e) => {
         this.commentsAvailable = false;
