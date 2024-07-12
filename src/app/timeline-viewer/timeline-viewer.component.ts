@@ -45,14 +45,13 @@ export class TimelineViewerComponent {
   commentsAvailable: boolean;
   comments: Comment[];
   isSmallScreen: boolean | undefined;
+  isLoading: boolean;
   constructor(private slackerNewsApi: SlackerNewsApiService) {
+    this.isLoading = true;
     this.stories = [];
     this.comments = [];
     this.dataAvailable = false;
     this.commentsAvailable = false;
-  }
-
-  ngOnInit() {
     this.reload();
   }
 
@@ -72,7 +71,6 @@ export class TimelineViewerComponent {
       })
       .catch((e) => {
         this.dataAvailable = false;
-        console.log("catch");
         console.log(e);
       });
     this.slackerNewsApi
@@ -85,7 +83,6 @@ export class TimelineViewerComponent {
       })
       .catch((e) => {
         this.commentsAvailable = false;
-        console.log("catch");
         console.log(e);
       });
   }
