@@ -12,4 +12,4 @@ jobs:
         with:
           node-version: "20.x"
       - run: npm install
-      - run: npm test
+      - run: npx ng test --no-watch --no-progress --code-coverage --browsers=ChromeHeadless
