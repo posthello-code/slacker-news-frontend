@@ -2,27 +2,14 @@ import { Component } from "@angular/core";
 import { TimelineModule } from "primeng/timeline";
 import { CardModule } from "primeng/card";
 import { ScrollPanelModule } from "primeng/scrollpanel";
+import { ProgressSpinnerModule } from "primeng/progressspinner";
+
 import { SlackerNewsApiService } from "../slacker-news-api.service";
 import { ListboxModule } from "primeng/listbox";
 import { CommonModule, NgFor, NgIf } from "@angular/common";
-
-interface Story {
-  id?: string;
-  title?: string;
-  summary?: string;
-  sourceUri?: string;
-  sourceId?: string;
-  createdDate?: string;
-  externalId?: number;
-}
-
-interface Comment {
-  summary?: string;
-  id?: string;
-  sourceId?: string;
-  createdDate?: string;
-  externalId?: number;
-}
+import { forkJoin } from "rxjs";
+import { Story } from "../models/stories";
+import { Comment } from "../models/comments";
 
 @Component({
   selector: "app-timeline-viewer",
@@ -35,6 +22,7 @@ interface Comment {
     ListboxModule,
     NgFor,
     CommonModule,
+    ProgressSpinnerModule,
   ],
   templateUrl: "./timeline-viewer.component.html",
   styleUrl: "./timeline-viewer.component.scss",
@@ -61,29 +49,15 @@ export class TimelineViewerComponent {
   }
 
   loadData() {
-    this.slackerNewsApi
-      .getStories()
-      .then((data) => {
+    forkJoin({
+      stories: this.slackerNewsApi.getStories(),
+      comments: this.slackerNewsApi.getComments(),
+    }).subscribe({
+      next: (value) => {
+        this.comments = value.comments;
+        this.stories = value.stories;
         this.dataAvailable = true;
-
-        // Use the data here
-        this.stories = data.data;
-      })
-      .catch((e) => {
-        this.dataAvailable = false;
-        console.log(e);
-      });
-    this.slackerNewsApi
-      .getComments()
-      .then((data) => {
-        this.commentsAvailable = true;
-
-        // Use the data here
-        this.comments = data.data;
-      })
-      .catch((e) => {
-        this.commentsAvailable = false;
-        console.log(e);
-      });
+      },
+    });
   }
 }

@@ -106,6 +106,7 @@
   </p-scrollPanel>
 </div>
 <ng-template [style]="{ display: 'flex' }" #elseDataFallback>
-  <div>Thanks for visiting, take a deep breath and try again in a moment.</div>
-  <button (click)="reload()">Click here to reload</button>
+  <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+  <div>Loading</div>
+  <button (click)="reload()">Click here to try again</button>
 </ng-template>
