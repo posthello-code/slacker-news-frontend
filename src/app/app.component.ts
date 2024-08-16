@@ -1,11 +1,9 @@
-import { Component, HostListener, OnInit } from "@angular/core";
+import { Component, HostListener } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { SplitterModule } from "primeng/splitter";
 import { TimelineModule } from "primeng/timeline";
 import { TimelineViewerComponent } from "./timeline-viewer/timeline-viewer.component";
-import { CommonModule, NgIf, isPlatformBrowser } from "@angular/common";
-import { WindowSizeService } from "./window-size.service";
-import { Subscription } from "rxjs";
+import { CommonModule, NgIf } from "@angular/common";
 
 @Component({
   selector: "app-root",
@@ -22,18 +20,15 @@ import { Subscription } from "rxjs";
   styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  private sizeSubscription: Subscription;
   isSmallScreen = false;
   title = "slacker-news";
-  constructor(private windowSizeService: WindowSizeService) {
+  constructor() {
     this.isSmallScreen = window.innerWidth < 768;
-    this.sizeSubscription = this.windowSizeService.onResize$.subscribe(() => {
-      console.log("Window resized");
-    });
   }
 
   @HostListener("window:resize", ["$event"])
-  onResize(event: any) {
+  onResize() {
+    console.log("window resize");
     this.isSmallScreen = window.innerWidth < 768;
   }
 }

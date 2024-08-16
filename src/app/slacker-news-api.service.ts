@@ -1,5 +1,7 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import axios from "axios";
+import { Story } from "./models/stories";
+import { Comment } from "./models/comments";
 
 const url = "https://slacker-news-server.onrender.com";
 
@@ -7,11 +9,11 @@ const url = "https://slacker-news-server.onrender.com";
   providedIn: "root",
 })
 export class SlackerNewsApiService {
-  constructor() {}
+  constructor(private http: HttpClient) {}
   getStories() {
-    return axios.get(url + "/stories");
+    return this.http.get<Story[]>(url + "/stories");
   }
   getComments() {
-    return axios.get(url + "/comments");
+    return this.http.get<Comment[]>(url + "/comments");
   }
 }
