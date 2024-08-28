@@ -7,7 +7,7 @@ import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { SlackerNewsApiService } from "../slacker-news-api.service";
 import { ListboxModule } from "primeng/listbox";
 import { CommonModule, NgFor, NgIf } from "@angular/common";
-import { forkJoin } from "rxjs";
+import { forkJoin, retry, retryWhen } from "rxjs";
 import { Story } from "../models/stories";
 import { Comment } from "../models/comments";
 
@@ -50,13 +50,16 @@ export class TimelineViewerComponent {
 
   loadData() {
     forkJoin({
-      stories: this.slackerNewsApi.getStories(),
-      comments: this.slackerNewsApi.getComments(),
+      stories: this.slackerNewsApi.getStories().pipe(retry(1)),
+      comments: this.slackerNewsApi.getComments().pipe(retry(1)),
     }).subscribe({
       next: (value) => {
         this.comments = value.comments;
         this.stories = value.stories;
         this.dataAvailable = true;
+      },
+      error: (e) => {
+        console.warn(e);
       },
     });
   }

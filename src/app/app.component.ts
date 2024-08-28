@@ -1,9 +1,10 @@
-import { Component, HostListener } from "@angular/core";
+import { Component } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { SplitterModule } from "primeng/splitter";
 import { TimelineModule } from "primeng/timeline";
 import { TimelineViewerComponent } from "./timeline-viewer/timeline-viewer.component";
 import { CommonModule, NgIf } from "@angular/common";
+import { debounce, fromEvent, interval } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -23,12 +24,10 @@ export class AppComponent {
   isSmallScreen = false;
   title = "slacker-news";
   constructor() {
-    this.isSmallScreen = window.innerWidth < 768;
-  }
-
-  @HostListener("window:resize", ["$event"])
-  onResize() {
-    console.log("window resize");
-    this.isSmallScreen = window.innerWidth < 768;
+    const resize = fromEvent(window, "resize");
+    const result = resize.pipe(debounce(() => interval(500)));
+    result.subscribe(() => {
+      this.isSmallScreen = window.innerWidth < 768;
+    });
   }
 }
