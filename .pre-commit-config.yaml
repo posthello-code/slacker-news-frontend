@@ -9,6 +9,6 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
   - repo: https://github.com/posthello-code/pre-commit-prettier
-    rev: "" # Use the sha or tag you want to point at
+    rev: "3333cb1d1b3a4ab1cb3008c6eff40c5193fd761d" # Use the sha or tag you want to point at
     hooks:
       - id: prettier
