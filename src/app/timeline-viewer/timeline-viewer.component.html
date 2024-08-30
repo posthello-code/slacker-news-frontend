@@ -110,7 +110,13 @@
 
 <!-- Fallback for when API data is not available -->
 <ng-template [style]="{ display: 'flex' }" #dataFallback>
-  <div [style]="{ display: 'flex', flexDirection: 'column' }">
+  <div
+    [style]="{
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '20px',
+    }"
+  >
     <div>Loading</div>
 
     <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
