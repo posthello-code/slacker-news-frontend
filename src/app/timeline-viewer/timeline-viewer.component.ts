@@ -4,7 +4,7 @@ import { CardModule } from "primeng/card";
 import { ScrollPanelModule } from "primeng/scrollpanel";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 
-import { SlackerNewsApiService } from "../slacker-news-api.service";
+import { SlackerNewsApiService } from "../services/slacker-news-api.service";
 import { ListboxModule } from "primeng/listbox";
 import { CommonModule, NgFor, NgIf } from "@angular/common";
 import { forkJoin, retry, retryWhen } from "rxjs";
