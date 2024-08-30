@@ -21,7 +21,7 @@ import { debounce, fromEvent, interval } from "rxjs";
   styleUrl: "./app.component.scss",
 })
 export class AppComponent {
-  isSmallScreen = false;
+  isSmallScreen = window.innerWidth < 768;
   title = "slacker-news";
   constructor() {
     const resize = fromEvent(window, "resize");

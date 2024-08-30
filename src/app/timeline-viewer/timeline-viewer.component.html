@@ -1,4 +1,4 @@
-<div *ngIf="dataAvailable; else elseDataFallback">
+<div *ngIf="dataAvailable; else dataFallback">
   <p-scrollPanel
     [style]="{
       padding: '5px',
@@ -8,7 +8,8 @@
     }"
     styleClass="custombar1"
   >
-    <div *ngIf="!isSmallScreen; else elseBlock">
+    <!-- Large screen view -->
+    <div *ngIf="!isSmallScreen; else smallScreen">
       <p-timeline
         [style]="{ display: 'inline', padding: '20px', height: '100%' }"
         [value]="stories"
@@ -65,7 +66,8 @@
         </ng-template>
       </p-timeline>
     </div>
-    <ng-template [style]="{ padding: '20px' }" #elseBlock>
+    <!-- Small screen view -->
+    <ng-template [style]="{ padding: '20px' }" #smallScreen>
       <div *ngFor="let story of stories">
         <span [style]="{ display: 'inline' }" class="custom-marker shadow-2">
           <i class="pi pi-book"></i>
@@ -105,8 +107,19 @@
     </ng-template>
   </p-scrollPanel>
 </div>
-<ng-template [style]="{ display: 'flex' }" #elseDataFallback>
-  <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
-  <div>Loading</div>
-  <button (click)="reload()">Click here to try again</button>
+
+<!-- Fallback for when API data is not available -->
+<ng-template [style]="{ display: 'flex' }" #dataFallback>
+  <div
+    [style]="{
+      display: 'flex',
+      flexDirection: 'column',
+      padding: '20px',
+    }"
+  >
+    <div>Loading</div>
+
+    <p-progressSpinner ariaLabel="loading"></p-progressSpinner>
+    <button (click)="reload()">Click here to try again</button>
+  </div>
 </ng-template>

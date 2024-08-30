@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Story } from "./models/stories";
-import { Comment } from "./models/comments";
+import { Story } from "../models/stories";
+import { Comment } from "../models/comments";
 
 const url = "https://slacker-news-server.onrender.com";
 

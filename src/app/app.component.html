@@ -1,5 +1,6 @@
 <main class="main">
   <div class="content">
+    <!-- Small Screen -->
     <div *ngIf="isSmallScreen; else elseBlock">
       <div id="title-text" [style]="{ padding: '10px' }">Slacker News</div>
       <app-timeline-viewer
@@ -7,6 +8,7 @@
         style="padding: 20px"
       ></app-timeline-viewer>
     </div>
+    <!-- Large Screen -->
     <ng-template #elseBlock>
       <p-splitter id="p-splitter" [panelSizes]="[15, 85]">
         <ng-template pTemplate>

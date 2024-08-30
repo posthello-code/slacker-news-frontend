@@ -4,10 +4,10 @@ import { CardModule } from "primeng/card";
 import { ScrollPanelModule } from "primeng/scrollpanel";
 import { ProgressSpinnerModule } from "primeng/progressspinner";
 
-import { SlackerNewsApiService } from "../slacker-news-api.service";
+import { SlackerNewsApiService } from "../services/slacker-news-api.service";
 import { ListboxModule } from "primeng/listbox";
 import { CommonModule, NgFor, NgIf } from "@angular/common";
-import { forkJoin, retry, retryWhen } from "rxjs";
+import { forkJoin, retry } from "rxjs";
 import { Story } from "../models/stories";
 import { Comment } from "../models/comments";
 
@@ -32,7 +32,7 @@ export class TimelineViewerComponent {
   dataAvailable: boolean;
   commentsAvailable: boolean;
   comments: Comment[];
-  isSmallScreen: boolean | undefined;
+  isSmallScreen: boolean = window.innerWidth < 768;
   isLoading: boolean;
   constructor(private slackerNewsApi: SlackerNewsApiService) {
     this.isLoading = true;
@@ -45,7 +45,6 @@ export class TimelineViewerComponent {
 
   reload() {
     this.loadData();
-    this.isSmallScreen = window.innerWidth < 768;
   }
 
   loadData() {
