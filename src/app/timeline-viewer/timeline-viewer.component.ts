@@ -7,7 +7,7 @@ import { ProgressSpinnerModule } from "primeng/progressspinner";
 import { SlackerNewsApiService } from "../services/slacker-news-api.service";
 import { ListboxModule } from "primeng/listbox";
 import { CommonModule, NgFor, NgIf } from "@angular/common";
-import { forkJoin, retry, retryWhen } from "rxjs";
+import { forkJoin, retry } from "rxjs";
 import { Story } from "../models/stories";
 import { Comment } from "../models/comments";
 
