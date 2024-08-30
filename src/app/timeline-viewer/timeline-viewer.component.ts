@@ -32,7 +32,7 @@ export class TimelineViewerComponent {
   dataAvailable: boolean;
   commentsAvailable: boolean;
   comments: Comment[];
-  isSmallScreen: boolean | undefined;
+  isSmallScreen: boolean = window.innerWidth < 768;
   isLoading: boolean;
   constructor(private slackerNewsApi: SlackerNewsApiService) {
     this.isLoading = true;
@@ -45,7 +45,6 @@ export class TimelineViewerComponent {
 
   reload() {
     this.loadData();
-    this.isSmallScreen = window.innerWidth < 768;
   }
 
   loadData() {
