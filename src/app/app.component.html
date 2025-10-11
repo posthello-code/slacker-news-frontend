@@ -2,7 +2,16 @@
   <div class="content">
     <!-- Small Screen -->
     <div *ngIf="isSmallScreen; else elseBlock">
-      <div id="title-text" [style]="{ padding: '10px' }">Slacker News</div>
+      <div id="title-section">
+        <button
+          *ngIf="!isDataLoading"
+          pButton
+          class="dark-mode-toggle"
+          [icon]="themeService.isDarkMode() ? 'pi pi-moon' : 'pi pi-sun'"
+          (click)="toggleDarkMode()"
+        ></button>
+        <div id="title-text">Slacker News</div>
+      </div>
       <app-timeline-viewer
         id="#timeline-small"
         style="padding: 20px"
@@ -12,7 +21,16 @@
     <ng-template #elseBlock>
       <p-splitter id="p-splitter" [panelSizes]="[15, 85]">
         <ng-template pTemplate>
-          <div id="title-text" [style]="{ padding: '10px' }">Slacker News</div>
+          <div id="title-section">
+            <button
+              *ngIf="!isDataLoading"
+              pButton
+              class="dark-mode-toggle"
+              [icon]="themeService.isDarkMode() ? 'pi pi-moon' : 'pi pi-sun'"
+              (click)="toggleDarkMode()"
+            ></button>
+            <div id="title-text">Slacker News</div>
+          </div>
         </ng-template>
         <ng-template id="summariesParent" pTemplate>
           <div id="summaries">
