@@ -6,7 +6,8 @@
     "start": "ng serve --configuration production",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
+    "test": "ng test --no-watch",
+    "test:watch": "ng test",
     "serve:ssr:slacker-news": "node dist/slacker-news/server/server.mjs"
   },
   "private": true,
@@ -44,5 +45,6 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.2"
-  }
+  },
+  "packageManager": "yarn@4.10.3"
 }
