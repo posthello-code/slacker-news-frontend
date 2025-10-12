@@ -18,6 +18,5 @@ repos:
       - id: run-tests
         language: system
         name: Run Tests
-        description: Run the test suite to ensure code quality.
         entry: bash -c "yarn test"
-        files: \.spec\.ts$
+        files: \.ts$
