@@ -1,0 +1,13 @@
+diff --git a/package.json b/package.json
+index 7215bf407bd5f82c0bc1221fe71c7fc8236cf4c2..a55a452f12bf570e75aefd60ee562eb0dc04b52c 100644
+--- a/package.json
++++ b/package.json
+@@ -443,7 +443,7 @@
+     "graceful-fs": "^4.2.6",
+     "http-proxy": "^1.18.1",
+     "isbinaryfile": "^4.0.8",
+-    "lodash": "^4.17.21",
++    "lodash": "^4.18.0",
+     "log4js": "^6.4.1",
+     "mime": "^2.5.2",
+     "minimatch": "^3.0.4",
