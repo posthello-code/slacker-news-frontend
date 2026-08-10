@@ -13,7 +13,6 @@ import { TooltipModule } from "primeng/tooltip";
   selector: "app-root",
   standalone: true,
   imports: [
-    RouterOutlet,
     SplitterModule,
     TimelineModule,
     TimelineViewerComponent,
